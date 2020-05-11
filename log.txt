@@ -1,0 +1,149 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| Chinook            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_Chinook |
++-------------------+
+| Album             |
+| Artist            |
+| Customer          |
+| Employee          |
+| Genre             |
+| Invoice           |
+| InvoiceLine       |
+| MediaType         |
+| Playlist          |
+| PlaylistTrack     |
+| Track             |
++-------------------+
+11 rows in set (0.00 sec)
+
+mysql> desc Artist
+    -> ;
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| ArtistId | int          | NO   | PRI | NULL    | auto_increment |
+| Name     | varchar(120) | YES  |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> source test.sql
++----------+
+| count(*) |
++----------+
+|     3503 |
++----------+
+1 row in set (0.00 sec)
+
++----------+
+| count(*) |
++----------+
+|      275 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select * from Album limit 5;
++---------+---------------------------------------+----------+
+| AlbumId | Title                                 | ArtistId |
++---------+---------------------------------------+----------+
+|       1 | For Those About To Rock We Salute You |        1 |
+|       2 | Balls to the Wall                     |        2 |
+|       3 | Restless and Wild                     |        2 |
+|       4 | Let There Be Rock                     |        1 |
+|       5 | Big Ones                              |        3 |
++---------+---------------------------------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> source test.sql
++----------+
+| count(*) |
++----------+
+|     3503 |
++----------+
+1 row in set (0.00 sec)
+
++----------+
+| count(*) |
++----------+
+|      275 |
++----------+
+1 row in set (0.01 sec)
+
++---------+---------------------------------------+----------+
+| AlbumId | Title                                 | ArtistId |
++---------+---------------------------------------+----------+
+|       1 | For Those About To Rock We Salute You |        1 |
+|       2 | Balls to the Wall                     |        2 |
+|       3 | Restless and Wild                     |        2 |
+|       4 | Let There Be Rock                     |        1 |
+|       5 | Big Ones                              |        3 |
++---------+---------------------------------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> source test.sql
++----------+
+| count(*) |
++----------+
+|     3503 |
++----------+
+1 row in set (0.00 sec)
+
++----------+
+| count(*) |
++----------+
+|      275 |
++----------+
+1 row in set (0.00 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) from Album limit 5' at line 1
+mysql> source test.sql
++----------+
+| count(*) |
++----------+
+|     3503 |
++----------+
+1 row in set (0.00 sec)
+
++----------+
+| count(*) |
++----------+
+|      275 |
++----------+
+1 row in set (0.00 sec)
+
++---------+---------------------------------------+----------+
+| AlbumId | Title                                 | ArtistId |
++---------+---------------------------------------+----------+
+|       1 | For Those About To Rock We Salute You |        1 |
+|       2 | Balls to the Wall                     |        2 |
+|       3 | Restless and Wild                     |        2 |
+|       4 | Let There Be Rock                     |        1 |
+|       5 | Big Ones                              |        3 |
++---------+---------------------------------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select Title, Name from Album
+    -> join Artist on Album.ArtistId = Artist.ArtistId
+    -> limit 5;
++---------------------------------------+-----------+
+| Title                                 | Name      |
++---------------------------------------+-----------+
+| For Those About To Rock We Salute You | AC/DC     |
+| Balls to the Wall                     | Accept    |
+| Restless and Wild                     | Accept    |
+| Let There Be Rock                     | AC/DC     |
+| Big Ones                              | Aerosmith |
++---------------------------------------+-----------+
+5 rows in set (0.00 sec)
+
